@@ -1,7 +1,6 @@
 # Node Study
 
 ## BRANCH LIST:
-
 -   EJS
 -   Express
 -   FS
