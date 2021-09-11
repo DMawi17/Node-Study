@@ -8,6 +8,7 @@ const ages = [20, 23, 30, 39];
 // module.exports = people;
 
 module.exports = {
+    // alow distructuring import in modules.js
     people,
     ages,
 };
