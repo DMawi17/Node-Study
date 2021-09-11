@@ -2,15 +2,22 @@ const http = require("http");
 const fs = require("fs");
 
 /*
-A SIMPLE
-   ____             _   _             
-  |  _ \ ___  _   _| |_(_)_ __   __ _ 
-  | |_) / _ \| | | | __| | '_ \ / _` |
-  |  _ < (_) | |_| | |_| | | | | (_| |
-  |_| \_\___/ \__,_|\__|_|_| |_|\__, |
-                                |___/ 
-SYSTEM
+
+   ____  _        _             
+  / ___|| |_ __ _| |_ _   _ ___ 
+  \___ \| __/ _` | __| | | / __|
+   ___) | || (_| | |_| |_| \__ \
+  |____/ \__\__,_|\__|\__,_|___/
+CODES AND REDIRECTS
 */
+
+/*
+ * 100 Range - informational responses
+ * 200 Range - success codes
+ * 300 Range - codes for redirects
+ * 400 Range - user or client error codes
+ * 500 Range - server error codes
+ */
 
 const server = http.createServer((req, res) => {
     // set header content type
@@ -21,12 +28,22 @@ const server = http.createServer((req, res) => {
     switch (req.url) {
         case "/":
             path += "index.html";
+            res.statusCode = 200; // *
             break;
         case "/about":
             path += "about.html";
+            res.statusCode = 200; // *
             break;
+        // ==> REDIRECT <== //
+        case "/about-me":
+            res.statusCode = 301; // *
+            res.setHeader("Location", "/about"); // redirecting to /about
+            res.end();
+            break;
+        //...
         default:
             path += "404.html";
+            res.statusCode = 404; // in dev-tools > network tab check status!
             break;
     }
 
