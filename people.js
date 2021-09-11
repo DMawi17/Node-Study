@@ -1,14 +1,14 @@
+// 1.
 const people = ["yoshi", "ryu", "chun-li", "mario"];
-const ages = [20, 23, 30, 39];
 
-// console.log(people);
+//3. export the people array to modules.js
+module.exports = people;
 
-// module.exports = 'hello'
+// 4. if we want to export multiple variable
+const ages = [23, 25, 32, 56];
 
-// module.exports = people;
-
+// 4. allow destructuring-import in the modules.js file.
 module.exports = {
-    // alow distructuring import in modules.js
-    people,
-    ages,
+    people, // same as people: people
+    ages, // same as ages: ages
 };
