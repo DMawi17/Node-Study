@@ -1,5 +1,3 @@
-// => GLOBAL
-
 console.log(global);
 
 global.setTimeout(() => {
