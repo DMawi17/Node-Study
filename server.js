@@ -3,24 +3,29 @@ const fs = require("fs");
 const _ = require("lodash");
 
 /*
-
-   ____  _        _             
-  / ___|| |_ __ _| |_ _   _ ___ 
-  \___ \| __/ _` | __| | | / __|
-   ___) | || (_| | |_| |_| \__ \
-  |____/ \__\__,_|\__|\__,_|___/
-CODES AND REDIRECTS
+   _              _           _     
+  | |    ___   __| | __ _ ___| |__  
+  | |   / _ \ / _` |/ _` / __| '_ \ 
+  | |__| (_) | (_| | (_| \__ \ | | |
+  |_____\___/ \__,_|\__,_|___/_| |_|
+A COUPLE OF EXAMPLES
 */
-
-/*
- * 100 Range - informational responses
- * 200 Range - success codes
- * 300 Range - codes for redirects
- * 400 Range - user or client error codes
- * 500 Range - server error codes
- */
-
 const server = http.createServer((req, res) => {
+    // ==> lodash <== //
+
+    const num = _.random(0, 20);
+    console.log(num);
+
+    // called only once
+    const greet = _.once(() => {
+        console.log("hello");
+    });
+
+    greet();
+    greet(); // this will never be called
+
+    // ...
+
     // set header content type
     res.setHeader("Content-Type", "text/html");
 
@@ -29,22 +34,22 @@ const server = http.createServer((req, res) => {
     switch (req.url) {
         case "/":
             path += "index.html";
-            res.statusCode = 200; // *
+            res.statusCode = 200;
             break;
         case "/about":
             path += "about.html";
-            res.statusCode = 200; // *
+            res.statusCode = 200;
             break;
         // ==> REDIRECT <== //
         case "/about-me":
-            res.statusCode = 301; // *
-            res.setHeader("Location", "/about"); // redirecting to /about
+            res.statusCode = 301;
+            res.setHeader("Location", "/about");
             res.end();
             break;
         //...
         default:
             path += "404.html";
-            res.statusCode = 404; // in dev-tools > network tab check status!
+            res.statusCode = 404;
             break;
     }
 
