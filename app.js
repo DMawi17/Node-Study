@@ -1,14 +1,43 @@
 const express = require("express");
+const morgan = require("morgan");
 
 // express app
 const app = express();
 
+// register view engine
+app.set("view engine", "ejs");
+
 // listen for requests
 app.listen(3000);
 
-// register view engine
-app.set("view engine", "ejs");
-// app.set('views', 'myviews');
+/*
+NORMAL, 3RD-PARTY AND STATIC
+   __  __ _     _     _ _                             
+  |  \/  (_) __| | __| | | _____      ____ _ _ __ ___ 
+  | |\/| | |/ _` |/ _` | |/ _ \ \ /\ / / _` | '__/ _ \
+  | |  | | | (_| | (_| | |  __/\ V  V / (_| | | |  __/
+  |_|  |_|_|\__,_|\__,_|_|\___| \_/\_/ \__,_|_|  \___|
+                                                      
+*/
+
+/* app.use((req, res, next) => {
+    console.log("new request made:");
+    console.log(("host: ", req.hostname));
+    console.log(("path: ", req.path));
+    console.log(("method: ", req.method));
+    next();
+});
+
+app.use((req, res, next) => {
+    console.log("In the next middleware:");
+    next();
+}); */
+
+// 3rd party middleware
+app.use(morgan("dev"));
+
+// Static Middleware
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
     const blogs = [
