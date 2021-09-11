@@ -1,37 +1,15 @@
-// const { people, ages } = require("./people");
-
-// console.log(people, ages); // => without module.exports xyz is = an empty object {}
-
-// without module.exports, people doesn't work!!!
-// console.log(people);
-
-//... with module.exports xyz is = 'hello'
-// console.log(xyz); // => empty object {}
-
-/*
-    ___  ____  
-   / _ \/ ___| 
-  | | | \___ \ 
-  | |_| |___) |
-   \___/|____/ 
-
-*/
-
-const os = require("os");
-// console.log(os.platform(), os.homedir());
-
-/*
-   _____ ____  
-  |  ___/ ___| 
-  | |_  \___ \ 
-  |  _|  ___) |
-  |_|   |____/ 
-
-*/
-
 const fs = require("fs");
 
-// Reading files
+/*
+   ____                _ _              
+  |  _ \ ___  __ _  __| (_)_ __   __ _  
+  | |_) / _ \/ _` |/ _` | | '_ \ / _` | 
+  |  _ <  __/ (_| | (_| | | | | | (_| | 
+  |_| \_\___|\__,_|\__,_|_|_| |_|\__, | 
+                                 |___/  
+files
+*/
+
 /* fs.readFile("./docs/blog1.txt", (err, data) => {
     if (err) {
         console.log(err);
@@ -40,14 +18,31 @@ const fs = require("fs");
     console.log(data.toString());
 });
 
-console.log("last line"); // executed first since async */
+console.log("last line"); // executed first since async 
 
-// Writing files
+/*
+  __        __    _ _   _              
+  \ \      / / __(_) |_(_)_ __   __ _  
+   \ \ /\ / / '__| | __| | '_ \ / _` | 
+    \ V  V /| |  | | |_| | | | | (_| | 
+     \_/\_/ |_|  |_|\__|_|_| |_|\__, | 
+                                |___/  
+files
+*/
+
 /* fs.writeFile("./docs/blog2.txt", "hello, ninja world", () => {
     console.log("file was written");
 }); */
 
-// Directories
+/*
+   ____  _               _             _           
+  |  _ \(_)_ __ ___  ___| |_ ___  _ __(_) ___  ___ 
+  | | | | | '__/ _ \/ __| __/ _ \| '__| |/ _ \/ __|
+  | |_| | | | |  __/ (__| || (_) | |  | |  __/\__ \
+  |____/|_|_|  \___|\___|\__\___/|_|  |_|\___||___/
+                                                   
+*/
+
 /* fs.mkdir("./docs/assets", (err) => {
     if (err) {
         console.log(err);
@@ -72,7 +67,16 @@ console.log("last line"); // executed first since async */
     });
 } */
 
-// Delete files
+/*
+   ____       _      _        
+  |  _ \  ___| | ___| |_ ___  
+  | | | |/ _ \ |/ _ \ __/ _ \ 
+  | |_| |  __/ |  __/ ||  __/ 
+  |____/ \___|_|\___|\__\___| 
+                              
+files
+*/
+
 /* if (fs.existsSync("./docs/deleteme.txt")) {
     fs.unlink("./docs/deleteme.txt", (err) => {
         if (err) {
