@@ -1,18 +1,27 @@
 const express = require("express");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 
 // express app
 const app = express();
 
 // ... connect to mongoDB
 const dbURI =
-    "mongodb+srv://DMawi:aogSekiNOK7GbP4R@cluster0.r2jkf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    "mongodb+srv://DMawi:aogSekiNOK7GbP4R@cluster0.r2jkf.mongodb.net/node-study?retryWrites=true&w=majority";
+
+//... mongoose to connect to database
+mongoose
+    .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        // console.log("connected to db");
+        app.listen(3000, (req, res) =>
+            console.log("connected to db and now listening")
+        );
+    })
+    .catch((err) => console.log(err));
 
 // register view engine
 app.set("view engine", "ejs");
-
-// listen for requests
-app.listen(3000);
 
 // 3rd party middleware
 app.use(morgan("dev"));
