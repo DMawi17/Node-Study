@@ -2,12 +2,13 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const Blog = require("./models/blog");
+const { render } = require("ejs");
 
 const app = express();
 
 // CONNECT TO MONGODB
 const dbURI =
-    "mongodb+srv://DMawi:aogSekiNOK7GbP4R@cluster0.r2jkf.mongodb.net/node-study?retryWrites=true&w=majority";
+    "mongodb+srv://DMawi:XeSk0O6r2Y6DbgSR@cluster0.r2jkf.mongodb.net/node-study?retryWrites=true&w=majority";
 
 // MONGOOSE CONNECT IT TO THE DB
 mongoose
@@ -46,6 +47,23 @@ app.post("/blogs", (req, res) => {
 
     blog.save()
         .then((result) => res.redirect("/blogs"))
+        .catch((err) => console.log(err));
+});
+
+app.get("/blogs/:aydi", (req, res) => {
+    const id = req.params.aydi; // extract the id
+    Blog.findById(id)
+        .then((result) =>
+            res.render("details", { blog: result, title: "Blog Details" })
+        )
+        .catch((err) => console.log(err));
+});
+
+app.delete("/blogs/:id", (req, res) => {
+    const id = req.params.id;
+
+    Blog.findByIdAndDelete(id)
+        .then((result) => res.json({ redirect: "/blogs" }))
         .catch((err) => console.log(err));
 });
 
