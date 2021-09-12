@@ -36,8 +36,10 @@ app.get("/about", (req, res) => {
     res.render("about", { title: "About" });
 });
 
+// BLOG ROUTES
 app.use("/blogs", blogRoutes);
 
+// 404 PAGE
 app.use((req, res) => {
     res.status(404).render("404", { title: "404" });
 });
