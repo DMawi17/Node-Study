@@ -31,7 +31,7 @@ mongoose
     })
     .catch((err) => console.log(err));
 
-// MONGOOSE AND MONGO SANDBOX ROUTES
+/* // MONGOOSE AND MONGO SANDBOX ROUTES
 app.get("/add-blog", (req, res) => {
     // new instance of a blog we imported from blog.js
     const blog = new Blog({
@@ -62,13 +62,13 @@ app.get("/single-blog", (req, res) => {
     Blog.findById("613d964887f8f3d0685dbfb4")
         .then((result) => res.send(result))
         .catch((err) => console.log(err));
-});
+}); */
 
 // ...
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
+/* app.get("/", (req, res) => {
     const blogs = [
         {
             title: "Yoshi finds eggs",
@@ -84,17 +84,29 @@ app.get("/", (req, res) => {
         },
     ];
     res.render("index", { title: "Home", blogs });
-});
+}); */
 
 app.get("/about", (req, res) => {
     res.render("about", { title: "About" });
+});
+
+// BLOG ROUTES
+app.get("/", (req, res) => {
+    Blog.find()
+        .sort({ createdAt: -1 }) // reverse order with -1
+        .then((result) =>
+            res.render("index", {
+                title: "All Blogs",
+                blogs: result,
+            })
+        )
+        .catch((err) => console.log(err));
 });
 
 app.get("/blogs/create", (req, res) => {
     res.render("create", { title: "Create a new blog" });
 });
 
-// 404 page
 app.use((req, res) => {
     res.status(404).render("404", { title: "404" });
 });
