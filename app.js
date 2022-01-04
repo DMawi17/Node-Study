@@ -8,7 +8,7 @@ const app = express();
 
 // CONNECT TO MONGODB
 const dbURI =
-    "mongodb+srv://DMawi:XeSk0O6r2Y6DbgSR@cluster0.r2jkf.mongodb.net/node-study?retryWrites=true&w=majority";
+
 
 // MONGOOSE CONNECT IT TO THE DB
 mongoose
