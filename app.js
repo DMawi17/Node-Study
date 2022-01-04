@@ -18,7 +18,7 @@ DB AND MONGOOSE
 
 // CONNECT TO MONGODB
 const dbURI =
-    "mongodb+srv://DMawi:aogSekiNOK7GbP4R@cluster0.r2jkf.mongodb.net/node-study?retryWrites=true&w=majority";
+  
 
 // MONGOOSE CONNECT IT TO THE DB
 mongoose
